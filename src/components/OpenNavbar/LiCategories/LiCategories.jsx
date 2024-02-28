@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShapes, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
-import { categoriesText } from '../../../contants/contants';
+import { categoriesText, loremIpsumText } from '../../../contants/contants';
 
 export default function LiCategories() {
   const [categoriasAbiertas, setCategoriasAbiertas] = useState(false);
@@ -47,7 +47,7 @@ export default function LiCategories() {
           <li className='liCategoria'>Lorem Ipsum</li>
           <li className='liCategoria'>Lorem Ipsum</li>
           <li onClick={toggleCategoriasInternas} className='liCategoria liCategoriaArrow'>
-            Lorem Ipsum
+            {loremIpsumText}
             <div className='contenedorArrowCategoria'>
               <FontAwesomeIcon 
                 className='iconChevron' 
@@ -70,7 +70,7 @@ export default function LiCategories() {
           )}
           <li className='liCategoria'>Lorem Ipsum</li>
           <li onClick={toggleCategoriasInternas2} className='liCategoria liCategoriaArrow'>
-            Lorem Ipsum
+            {loremIpsumText}
             <div className='contenedorArrowCategoria'>
               <FontAwesomeIcon 
                 className='iconChevron' 

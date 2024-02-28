@@ -9,3 +9,5 @@ export const marketPlaceText = "Marketplace";
 export const forTalentsText = "For Talents"
 
 export const categoriesText = "Categories"
+
+export const loremIpsumText = "Lorem Ipsum"
