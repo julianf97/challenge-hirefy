@@ -1,29 +1,21 @@
-import { useState } from 'react';
+/* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShapes, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { categoriesText } from '../../../contants/contants';
 import CategoriaAbierta from '../CategoriaAbierta/CategoriaAbierta';
 
-function LiCategories() {
-  const [categoriasAbiertas, setCategoriasAbiertas] = useState(false);
-  const [categoriasAbiertasInternas, setCategoriasAbiertasInternas] = useState(false);
-  const [categoriasAbiertasInternas2, setCategoriasAbiertasInternas2] = useState(false);
-
-  const toggleCategorias = () => {
-    setCategoriasAbiertas(!categoriasAbiertas);
-  };
-
-  const toggleCategoriasInternas = () => {
-    setCategoriasAbiertasInternas(!categoriasAbiertasInternas);
-  };
-
-  const toggleCategoriasInternas2 = () => {
-    setCategoriasAbiertasInternas2(!categoriasAbiertasInternas2);
-  };
+function LiCategories({ 
+  categoriasAbiertas, 
+  categoriasAbiertasInternas, 
+  categoriasAbiertasInternas2, 
+  toggleCategoriasInternas, 
+  toggleCategoriasInternas2,
+  toggleCategorias
+}) {
 
   return (
     <>
-      <li className='liCategories' onClick={toggleCategorias}>
+      <li className={`liCategories ${categoriasAbiertas ? "categoriasAbiertasEstilo" : "claseCuandoCerrado"}`} onClick={toggleCategorias}>
         <div className='textoYlogo'>
           <div className='liLogo'>
             <FontAwesomeIcon className='iconCategories' icon={faShapes} />

@@ -145,6 +145,23 @@
         transition: 0.5s;
     }
 
+    .categoriasAbiertasEstilo{
+        background-color: #EEF7FF;
+        transition: 0.5s;
+    }
+
+    .liCategoriaActive{
+        background-color: #EEF7FF;
+        transition: 0.5s;
+        padding-left: 40px;
+        color: #0000008a;
+        height: 50px;
+    }
+
+    .categoriasAbiertasEstilo .iconCategories{
+        color: #39D3BB;
+    }
+
     li:hover .iconCategories {
         color: #39D3BB;
     }

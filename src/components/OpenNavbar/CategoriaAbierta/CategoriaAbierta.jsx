@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { motion } from 'framer-motion';
 import Categoria from '../Categoria/Categoria';
 import CategoriaInterna from '../CategoriaInterna/CategoriaInterna';
