@@ -1,13 +1,13 @@
-import './App.css'
-import Principal from './components/Principal/Principal'
+import './App.css';
+import MyApp from './components/MyApp/MyApp';
+import { NavbarProvider } from './context/NavbarContext';
 
 function App() {
-
   return (
-    <>
-      <Principal/>
-    </>
-  )
+    <NavbarProvider>
+      <MyApp/>
+    </NavbarProvider>
+  );
 }
 
-export default App
+export default App;

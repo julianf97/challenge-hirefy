@@ -1,0 +1,80 @@
+.contenedorNavbar{
+    width: 100%;
+    height: 70px;
+    background-color: #0D5287;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.contenedorInternoNavbar{
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contenedorLogo{
+    width: 150px;
+    height: 100%;
+    display: flex;
+}
+
+.contenedorImg{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.imgLogo{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #31455C;
+    border: solid 1px #113552;
+}
+
+.iconMaletin{
+    color: #00D0BF;
+}
+
+.contenedorLetrasLogo{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.letrasLogo{
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorHamburger{
+    width: 150px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
+    .contenedorHamburger{
+        width: 80px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
