@@ -19,3 +19,5 @@ export const privacyText = "Privacy"
 export const securityText = "Security"
 
 export const versionText = "Version"
+
+export const finalTextText = "© 2023, Hirefy, LLC"
