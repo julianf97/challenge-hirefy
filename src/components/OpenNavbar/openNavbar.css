@@ -102,16 +102,53 @@
 
     .iconHouse{
         color: #0D5287;
+        transition: 0.5s;
+
     }
+
+    li:hover .iconHouse {
+        color: #39D3BB;
+    }
+
     .iconQuestion{
         color: #000;
+        transition: 0.5s;
     }
+    li:hover .iconQuestion {
+        color: #39D3BB;
+    }
+
     .iconUsers{
         color: #000;
+        transition: 0.5s;
     }
+    li:hover .iconUsers {
+        color: #39D3BB;
+    }
+
     .iconFile{
         color: #000;
+        transition: 0.5s;
     }
+    li:hover .iconFile {
+        color: #39D3BB;
+    }
+
+
+    .iconUsers{
+        color: #000;
+        transition: 0.5s;
+    }
+
+    .iconCategories{
+        color: #000;
+        transition: 0.5s;
+    }
+
+    li:hover .iconCategories {
+        color: #39D3BB;
+    }
+
     .iconChevron{
         color: #0D5287;
     }

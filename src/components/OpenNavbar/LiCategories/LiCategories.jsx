@@ -26,7 +26,7 @@ function LiCategories() {
       <li className='liCategories' onClick={toggleCategorias}>
         <div className='textoYlogo'>
           <div className='liLogo'>
-            <FontAwesomeIcon className='iconHouse' icon={faShapes} />
+            <FontAwesomeIcon className='iconCategories' icon={faShapes} />
           </div>
           {categoriesText}
         </div>
