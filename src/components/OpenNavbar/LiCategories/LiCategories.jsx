@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShapes, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
 import { categoriesText, loremIpsumText } from '../../../contants/contants';
+import Categoria from '../Categoria/Categoria';
+import CategoriaInterna from '../CategoriaInterna/CategoriaInterna';
 
-export default function LiCategories() {
+function LiCategories() {
   const [categoriasAbiertas, setCategoriasAbiertas] = useState(false);
   const [categoriasAbiertasInternas, setCategoriasAbiertasInternas] = useState(false);
   const [categoriasAbiertasInternas2, setCategoriasAbiertasInternas2] = useState(false);
@@ -25,74 +27,46 @@ export default function LiCategories() {
     <>
       <li className='liCategories' onClick={toggleCategorias}>
         <div className='textoYlogo'>
-          <div className="liLogo">
+          <div className='liLogo'>
             <FontAwesomeIcon className='iconHouse' icon={faShapes} />
           </div>
           {categoriesText}
         </div>
         <div className='contenedorArrowDown'>
-          <FontAwesomeIcon 
-            className='iconChevron' 
-            icon={categoriasAbiertas ? faChevronUp : faChevronDown} 
+          <FontAwesomeIcon
+            className='iconChevron'
+            icon={categoriasAbiertas ? faChevronUp : faChevronDown}
           />
         </div>
       </li>
       {categoriasAbiertas && (
-        <motion.ul 
+        <motion.ul
           className='categoriasAbiertas'
-          initial={{ opacity: 0, y: -10 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.3 }} 
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
         >
-          <li className='liCategoria'>{loremIpsumText}</li>
-          <li className='liCategoria'>{loremIpsumText}</li>
-          <li onClick={toggleCategoriasInternas} className='liCategoria liCategoriaArrow'>
-            {loremIpsumText}
-            <div className='contenedorArrowCategoria'>
-              <FontAwesomeIcon 
-                className='iconChevron' 
-                icon={categoriasAbiertasInternas ? faChevronUp : faChevronDown} 
-              />
-            </div>
-          </li>
-          { categoriasAbiertasInternas && (
-            <motion.div 
-              className='contenedorCategoriaAbiertaInterna'
-              initial={{ opacity: 0, y: -10 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.3 }} 
-            >
-              <ul className='categoriaInternaAbierta'>
-                <li className='liCategoria'>{loremIpsumText}</li>
-                <li className='liCategoria'>{loremIpsumText}</li>
-              </ul>
-            </motion.div>
-          )}
-          <li className='liCategoria'>{loremIpsumText}</li>
-          <li onClick={toggleCategoriasInternas2} className='liCategoria liCategoriaArrow'>
-            {loremIpsumText}
-            <div className='contenedorArrowCategoria'>
-              <FontAwesomeIcon 
-                className='iconChevron' 
-                icon={categoriasAbiertasInternas2 ? faChevronUp : faChevronDown} 
-              />
-            </div>
-          </li>
-          { categoriasAbiertasInternas2 && (
-            <motion.div 
-              className='contenedorCategoriaAbiertaInterna'
-              initial={{ opacity: 0, y: -10 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.3 }} 
-            >
-              <ul className='categoriaInternaAbierta'>
-                <li className='liCategoria'>{loremIpsumText}</li>
-                <li className='liCategoria'>{loremIpsumText}</li>
-              </ul>
-            </motion.div>
-          )}
+          <Categoria text={loremIpsumText} />
+          <Categoria text={loremIpsumText} />
+          <Categoria
+            text={loremIpsumText}
+            isOpen={categoriasAbiertasInternas}
+            toggle={toggleCategoriasInternas}
+            hasSubcategories={true}
+          />
+          {categoriasAbiertasInternas && <CategoriaInterna />}
+          <Categoria text={loremIpsumText} />
+          <Categoria
+            text={loremIpsumText}
+            isOpen={categoriasAbiertasInternas2}
+            toggle={toggleCategoriasInternas2}
+            hasSubcategories={true}
+          />
+          {categoriasAbiertasInternas2 && <CategoriaInterna />}
         </motion.ul>
       )}
     </>
   );
 }
+
+export default LiCategories;

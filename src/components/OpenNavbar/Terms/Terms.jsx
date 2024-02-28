@@ -2,7 +2,8 @@ import {
   termsText, 
   privacyText, 
   securityText, 
-  versionText 
+  versionText,
+  finalTextText
 } from "../../../contants/contants"
 
 export default function Terms() {
@@ -15,7 +16,7 @@ export default function Terms() {
             <span className="textBlue">{versionText}</span>
         </div>
         <div className='contenedorYearHireFy'>
-          <span className="finalText"> © 2023, Hirefy, LLC  </span>
+          <span className="finalText">{finalTextText} </span>
         </div>
     </div>
   )
