@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShapes, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { motion } from 'framer-motion';
-import { categoriesText, loremIpsumText } from '../../../contants/contants';
-import Categoria from '../Categoria/Categoria';
-import CategoriaInterna from '../CategoriaInterna/CategoriaInterna';
+import { categoriesText } from '../../../contants/contants';
+import CategoriaAbierta from '../CategoriaAbierta/CategoriaAbierta';
 
 function LiCategories() {
   const [categoriasAbiertas, setCategoriasAbiertas] = useState(false);
@@ -39,32 +37,13 @@ function LiCategories() {
           />
         </div>
       </li>
-      {categoriasAbiertas && (
-        <motion.ul
-          className='categoriasAbiertas'
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <Categoria text={loremIpsumText} />
-          <Categoria text={loremIpsumText} />
-          <Categoria
-            text={loremIpsumText}
-            isOpen={categoriasAbiertasInternas}
-            toggle={toggleCategoriasInternas}
-            hasSubcategories={true}
-          />
-          {categoriasAbiertasInternas && <CategoriaInterna />}
-          <Categoria text={loremIpsumText} />
-          <Categoria
-            text={loremIpsumText}
-            isOpen={categoriasAbiertasInternas2}
-            toggle={toggleCategoriasInternas2}
-            hasSubcategories={true}
-          />
-          {categoriasAbiertasInternas2 && <CategoriaInterna />}
-        </motion.ul>
-      )}
+      <CategoriaAbierta
+        categoriasAbiertas={categoriasAbiertas}
+        categoriasAbiertasInternas={categoriasAbiertasInternas}
+        categoriasAbiertasInternas2={categoriasAbiertasInternas2}
+        toggleCategoriasInternas={toggleCategoriasInternas}
+        toggleCategoriasInternas2={toggleCategoriasInternas2}
+      />
     </>
   );
 }
