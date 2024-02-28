@@ -44,8 +44,8 @@ export default function LiCategories() {
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.3 }} 
         >
-          <li className='liCategoria'>Lorem Ipsum</li>
-          <li className='liCategoria'>Lorem Ipsum</li>
+          <li className='liCategoria'>{loremIpsumText}</li>
+          <li className='liCategoria'>{loremIpsumText}</li>
           <li onClick={toggleCategoriasInternas} className='liCategoria liCategoriaArrow'>
             {loremIpsumText}
             <div className='contenedorArrowCategoria'>
@@ -63,12 +63,12 @@ export default function LiCategories() {
               transition={{ duration: 0.3 }} 
             >
               <ul className='categoriaInternaAbierta'>
-                <li className='liCategoria'>Lorem Ipsum</li>
-                <li className='liCategoria'>Lorem Ipsum</li>
+                <li className='liCategoria'>{loremIpsumText}</li>
+                <li className='liCategoria'>{loremIpsumText}</li>
               </ul>
             </motion.div>
           )}
-          <li className='liCategoria'>Lorem Ipsum</li>
+          <li className='liCategoria'>{loremIpsumText}</li>
           <li onClick={toggleCategoriasInternas2} className='liCategoria liCategoriaArrow'>
             {loremIpsumText}
             <div className='contenedorArrowCategoria'>
@@ -86,8 +86,8 @@ export default function LiCategories() {
               transition={{ duration: 0.3 }} 
             >
               <ul className='categoriaInternaAbierta'>
-                <li className='liCategoria'>Lorem Ipsum</li>
-                <li className='liCategoria'>Lorem Ipsum</li>
+                <li className='liCategoria'>{loremIpsumText}</li>
+                <li className='liCategoria'>{loremIpsumText}</li>
               </ul>
             </motion.div>
           )}
