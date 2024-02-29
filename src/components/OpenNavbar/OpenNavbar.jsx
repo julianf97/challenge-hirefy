@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
-import "./openNavbar.css";
+import './openNavbar.css';
 import ListaNav from "./ListaNav/ListaNav";
 import Terms from './Terms/Terms';
+import { menuItems } from '../../data/menuItems'; // Importa los datos de menuItems
 
 export default function OpenNavbar() {
   return (
@@ -12,7 +13,7 @@ export default function OpenNavbar() {
       transition={{ duration: 0.6 }}
     >
       <div className="contenedorInternoOpenNavbar">
-        <ListaNav />
+        <ListaNav items={menuItems} /> {/* Pasa menuItems como prop a ListaNav */}
       </div>
       <Terms/>
     </motion.div>

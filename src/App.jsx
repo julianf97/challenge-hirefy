@@ -1,12 +1,17 @@
 import './App.css';
 import MyApp from './components/MyApp/MyApp';
 import { NavbarProvider } from './context/NavbarContext';
+import { HashRouter as BrowserRouter} from 'react-router-dom';
 
 function App() {
   return (
-    <NavbarProvider>
-      <MyApp/>
-    </NavbarProvider>
+    <>
+      <BrowserRouter>
+        <NavbarProvider>
+          <MyApp/>
+        </NavbarProvider>
+      </BrowserRouter>
+    </>
   );
 }
 

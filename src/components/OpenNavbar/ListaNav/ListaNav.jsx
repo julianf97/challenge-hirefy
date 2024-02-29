@@ -1,76 +1,86 @@
-import { useState } from 'react';
+/* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import LiCategories from '../LiCategories/LiCategories';
 import { 
-  faHouse,
-  faQuestion,
-  faUsers,
-  faFile,
+  faAngleDown,
+  faAngleUp
 } from '@fortawesome/free-solid-svg-icons';
-import { 
-  forTalentsText,
-  homeText,
-  howItWorksText,
-  marketPlaceText
-} from '../../../contants/contants';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
+export default function ListaNav({ items }) {
+  const [showChildren, setShowChildren] = useState({});
+  const [arrowIcons, setArrowIcons] = useState({});
 
-export default function ListaNav() {
+  const toggleChildren = (index) => {
+    setShowChildren(prevState => ({
+      ...prevState,
+      [index]: !prevState[index]
+    }));
 
-  const [categoriasAbiertas, setCategoriasAbiertas] = useState(false);
-  const [categoriasAbiertasInternas, setCategoriasAbiertasInternas] = useState(false);
-  const [categoriasAbiertasInternas2, setCategoriasAbiertasInternas2] = useState(false);
-
-  const toggleCategorias = () => {
-    setCategoriasAbiertas(!categoriasAbiertas);
+    setArrowIcons(prevIcons => ({
+      ...prevIcons,
+      [index]: showChildren[index] ? faAngleDown : faAngleUp
+    }));
   };
 
-  const toggleCategoriasInternas = () => {
-    setCategoriasAbiertasInternas(!categoriasAbiertasInternas);
-  };
+  const renderMenuItem = (menuItem, index, parentIndex = null) => {
+    const logoItemClass = menuItem.title === 'Categories' ? ' categories' : 'logoItem';
+    const isChildOfCategory = parentIndex !== null;
 
-  const toggleCategoriasInternas2 = () => {
-    setCategoriasAbiertasInternas2(!categoriasAbiertasInternas2);
+    return (
+      <div className={logoItemClass} key={menuItem.title}>
+        {menuItem.title !== 'Categories' && (
+          <div className='logoItemsContainer'>
+            {menuItem.icon && <FontAwesomeIcon icon={menuItem.icon} className="menuItemIcon" />}
+          </div>
+        )}
+        <div onClick={() => toggleChildren(index)}>
+          {menuItem.title === 'Categories' ? (
+            <div className="categoriesContainer">
+              <div className='internoCategories'>
+                <div className='logoItemsContainer'>
+                  {menuItem.icon && <FontAwesomeIcon icon={menuItem.icon} className="menuItemIcon" />}
+                </div>
+                <span>{menuItem.title}</span>
+              </div>
+              <div className='contenedorDownArrow'>
+                <FontAwesomeIcon icon={arrowIcons[index] || faAngleDown} className="menuItemIcon" />
+              </div>
+            </div>   
+          ) : (
+            <Link to={menuItem.link}>{menuItem.title}</Link>
+          )}
+        </div>
+        <div className='contenedorUlChildren'>
+          {showChildren[index] && menuItem.children && (
+            <ul className={`ulChildren${isChildOfCategory ? ' childOfCategory' : ''}`}>
+              {menuItem.children.map((childItem, childIndex) => (
+                <li className={childItem.children ? 'liWhitChildren' : ''} key={`${childItem.title}-${childIndex}`}>
+                  {childItem.children ? (
+                    <div className='contenedorDownArrow'>
+                      <FontAwesomeIcon icon={arrowIcons[`${index}-${childIndex}`] || faAngleDown} className="menuItemIcon" onClick={() => toggleChildren(`${index}-${childIndex}`)} />
+                    </div>
+                  ) : null}
+                  <div className='contenedorChildTitleIcon'>
+                    {renderMenuItem(childItem, `${index}-${childIndex}`, index)}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    );
   };
 
   return (
     <div className="contenedorLista">
-      <ul className="lista">
-        <li onClick={() => setCategoriasAbiertas(false)}> 
-          <div className="liLogo">
-            <FontAwesomeIcon className='iconHouse' icon={faHouse} />
-          </div>
-          {homeText}
-        </li>
-        <li onClick={() => setCategoriasAbiertas(false)}> 
-          <div className="liLogo">
-            <FontAwesomeIcon className='iconQuestion' icon={faQuestion} />
-          </div>
-          {howItWorksText}
-        </li>
-        <li onClick={() => setCategoriasAbiertas(false)}> 
-          <div className="liLogo">
-            <FontAwesomeIcon className='iconUsers' icon={faUsers} />
-          </div>
-          {marketPlaceText}
-        </li>
-        <li onClick={() => setCategoriasAbiertas(false)}> 
-          <div className="liLogo">
-            <FontAwesomeIcon className='iconFile' icon={faFile} />
-          </div>
-          {forTalentsText}
-        </li>
-        <LiCategories
-          categoriasAbiertas={categoriasAbiertas}
-          setCategoriasAbiertas={setCategoriasAbiertas}
-          categoriasAbiertasInternas={categoriasAbiertasInternas}
-          setCategoriasAbiertasInternas={setCategoriasAbiertasInternas}
-          categoriasAbiertasInternas2={categoriasAbiertasInternas2}
-          setCategoriasAbiertasInternas2={setCategoriasAbiertasInternas2}
-          toggleCategorias={toggleCategorias}
-          toggleCategoriasInternas={toggleCategoriasInternas}
-          toggleCategoriasInternas2={toggleCategoriasInternas2}
-        />
+      <ul className="listaUl">
+        {items.map((menuItem, index) => (
+          <li key={`${menuItem.title}-${index}`}>
+            {renderMenuItem(menuItem, `${index}`)}
+          </li>
+        ))}
       </ul>
     </div>
   );
